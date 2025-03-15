@@ -140,7 +140,7 @@ public class Runner {
     public static void main(String[] args) {
         Calc calc = new Calc();
         Runner runner = new Runner();
-        //calc.calc();
+        calc.calc();
         //runner.fio();
         //runner.checkCar();
         //runner.replaceString("this is simply. This is my favorite song.");
