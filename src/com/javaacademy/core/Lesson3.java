@@ -112,5 +112,6 @@ public class Lesson3 {
                 }
             }
         }
+        System.out.println("----------------------");
     }
 }
