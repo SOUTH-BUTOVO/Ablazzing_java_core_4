@@ -1,7 +1,4 @@
-package com.javaacademy.core;
-
-import java.util.Arrays;
-import java.util.Objects;
+package com.javaacademy.core.lesson1;
 
 public class Lesson1 {
     public static void main(String[] args) {

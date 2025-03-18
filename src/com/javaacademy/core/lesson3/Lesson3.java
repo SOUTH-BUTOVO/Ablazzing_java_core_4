@@ -1,4 +1,4 @@
-package com.javaacademy.core;
+package com.javaacademy.core.lesson3;
 
 import java.util.Arrays;
 

@@ -16,9 +16,9 @@ public class Runner {
         int indexEndSecondName = nameFormat.indexOf(" ");
         String secondName = nameFormat.substring(0, indexEndSecondName);
 
-        System.out.println(secondName.endsWith("ОВА") ? "Уважаемая: " + nameFormat :
-                secondName.endsWith("ОВ") ? "Уважаемый: "  + nameFormat :
-                        "Неизвестное лицо: " + nameFormat);
+        System.out.println(secondName.endsWith("ова".toUpperCase()) ? "Уважаемая: " + nameFormat :
+                           secondName.endsWith("ов".toUpperCase()) ? "Уважаемый: "  + nameFormat :
+                           "Неизвестное лицо: " + nameFormat);
     }
 
     public void checkCar() {
@@ -92,58 +92,58 @@ public class Runner {
          */
 
         // Колбаса
-        BigDecimal doneSausage = valueOf(2000); // Произведено
-        BigDecimal costSausage = valueOf(800); // Цена
-        BigDecimal netCostSausage = doneSausage.intValue() >= 2_000 ? valueOf(404) :
-                                    doneSausage.intValue() >= 1_000 ? valueOf(408) :
+        BigDecimal countSausage = valueOf(2000); // Произведено
+        BigDecimal priceSausage = valueOf(800); // Цена
+        BigDecimal costSausage = countSausage.intValue() >= 2_000 ? valueOf(404) :
+                                    countSausage.intValue() >= 1_000 ? valueOf(408) :
                                     valueOf(412); // Себестоимость
 
         // Ветчина
-        BigDecimal doneHam = valueOf(8511);
-        BigDecimal costHam = valueOf(350);
-        BigDecimal netCostHam = valueOf(275);
+        BigDecimal countHam = valueOf(8511);
+        BigDecimal priceHam = valueOf(350);
+        BigDecimal costHam = valueOf(275);
 
         // Шейка
-        BigDecimal doneNeck = valueOf(6988);
-        BigDecimal costNeck = valueOf(500);
-        BigDecimal netCostNeck = doneNeck.intValue() >= 500 ? valueOf(299) : valueOf(311);
+        BigDecimal countNeck = valueOf(6988);
+        BigDecimal priceNeck = valueOf(500);
+        BigDecimal costNeck = countNeck.intValue() >= 500 ? valueOf(299) : valueOf(311);
 
         // Доход компании
-        BigDecimal companyIncome = doneSausage.multiply(costSausage)
-                                   .add(doneHam.multiply(costHam)
-                                   .add(doneNeck.multiply(costNeck)));
-        System.out.println("Доход компании: \t\t" + companyIncome);
+        BigDecimal totalIncome = countSausage.multiply(priceSausage)
+                                   .add(countHam.multiply(priceHam)
+                                   .add(countNeck.multiply(priceNeck)));
+        System.out.println("Доход компании: \t\t" + totalIncome);
 
         // Расход компании
-        BigDecimal companyExpense = netCostSausage.multiply(doneSausage)
-                                    .add(netCostHam.multiply(doneHam))
-                                    .add(netCostNeck.multiply(doneNeck))
+        BigDecimal totalOutcome = costSausage.multiply(countSausage)
+                                    .add(costHam.multiply(countHam))
+                                    .add(costNeck.multiply(countNeck))
                                     .add(valueOf(1_000_000));
-        System.out.println("Расход компании: \t\t" + companyExpense);
+        System.out.println("Расход компании: \t\t" + totalOutcome);
 
         // Прибыль до налогов
-        BigDecimal profitBeforeTaxes = companyIncome.subtract(companyExpense);
-        System.out.println("Прибыль до налогов: \t" + profitBeforeTaxes);
+        BigDecimal profitBeforeTax = totalIncome.subtract(totalOutcome);
+        System.out.println("Прибыль до налогов: \t" + profitBeforeTax);
 
         // Налоги
-        BigDecimal taxes = valueOf(profitBeforeTaxes.intValue() > 2_000_000 ?
-                1_000_000 * 0.08 + 1_000_000 * 0.1 + (profitBeforeTaxes.intValue() - 2_000_000) * 0.13 :
-                profitBeforeTaxes.intValue() > 1_000_000 ? 1_000_000 * 0.08 +
-                (profitBeforeTaxes.intValue() - 1_000_000) * 0.1 : profitBeforeTaxes.intValue() * 0.08);
-        System.out.println("Налоги: \t\t\t\t" + taxes);
+        BigDecimal totalTax = valueOf(profitBeforeTax.intValue() > 2_000_000 ?
+                1_000_000 * 0.08 + 1_000_000 * 0.1 + (profitBeforeTax.intValue() - 2_000_000) * 0.13 :
+                profitBeforeTax.intValue() > 1_000_000 ? 1_000_000 * 0.08 +
+                (profitBeforeTax.intValue() - 1_000_000) * 0.1 : profitBeforeTax.intValue() * 0.08);
+        System.out.println("Налоги: \t\t\t\t" + totalTax);
 
         // Прибыль после налогов
-        BigDecimal profitAfterTaxes = profitBeforeTaxes.subtract(taxes);
+        BigDecimal profitAfterTaxes = profitBeforeTax.subtract(totalTax);
         System.out.println("Прибыль после налогов: \t" + profitAfterTaxes);
     }
 
     public static void main(String[] args) {
         Calc calc = new Calc();
         Runner runner = new Runner();
-        calc.calc();
-        //runner.fio();
-        //runner.checkCar();
-        //runner.replaceString("this is simply. This is my favorite song.");
+        //calc.calc();
+        runner.fio();
+        runner.checkCar();
+        runner.replaceString("this is simply. This is my favorite song.");
         runner.factoryMeat();
     }
 }
