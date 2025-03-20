@@ -17,6 +17,6 @@ public class Runner {
 
         Shop shop = new Shop(true, false, 3);
         Customer customer = new Customer("Елена Летучая");
-        customer.checkShop(shop.);
+        customer.checkShop(shop);
     }
 }

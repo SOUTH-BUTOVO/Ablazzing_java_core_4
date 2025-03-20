@@ -32,15 +32,9 @@ public class Runner {
 
     public static void generateNum() {
         Random random = new Random(1);
-
-
         int count = 1;
         int searchNum = 999;
-        while (true) {
-            int number = random.nextInt(1000);
-            if (number == searchNum) {
-                break;
-            }
+        while (random.nextInt(1000) != searchNum) {
             count++;
         }
         System.out.println("Число " + searchNum + ", было найдено с " + count + "й попытки.");

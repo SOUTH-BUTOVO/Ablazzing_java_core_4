@@ -1,10 +1,10 @@
 package com.javaacademy.core.homework2.office;
 
 public class Office {
-    Boss boss;
-    Manager manager;
-    Secretary secretary;
-    Security security;
+    private Boss boss;
+    private Manager manager;
+    private Secretary secretary;
+    private Security security;
 
     public Office(Boss boss, Manager manager, Secretary secretary, Security security) {
         this.boss = boss;
