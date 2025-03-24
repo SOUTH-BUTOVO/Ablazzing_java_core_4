@@ -1,18 +1,23 @@
 package com.javaacademy.core.homework3.factory;
 
 public class FactorySamsung {
-    private static Samsung[] samsungs = new Samsung[10];
+    private static final int COUNT_MEGAPIXELS = 16;
+    private static final int CPU_MHZ = 1000;
+    private static final int CORPUS_LENGTH = 200;
+    private static final int CORPUS_WIDTH = 60;
+    private static final int CORPUS_THICKNESS = 15;
+    private static Samsung samsungs;
     private static int countCreatePhone = 0;
 
-    public void createSamsung() {
-        Samsung samsung = new Samsung(new Camera(16),
-                                   new Processor[] {new Processor(1000)},
-                                   new Corpus(200, 60, 15));
-        samsungs[countCreatePhone++] = samsung;
+    public static Samsung createSamsung() {
+        Samsung samsung = new Samsung(new Camera(COUNT_MEGAPIXELS),
+                                   new Processor[] {new Processor(CPU_MHZ)},
+                                   new Corpus(CORPUS_LENGTH, CORPUS_WIDTH, CORPUS_THICKNESS));
+        countCreatePhone++;
+        return samsung;
     }
 
-    public Samsung[] getSamsungs() {
-        System.out.println("Самсунгов создано: " + countCreatePhone);
-        return samsungs;
+    public static void getSamsungs() {
+        System.out.println("Samsung телефонов создано: " + countCreatePhone);
     }
 }

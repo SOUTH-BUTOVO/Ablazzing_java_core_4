@@ -56,17 +56,24 @@ public class Runner {
         }
         System.out.println("===========================");
 
-        FactorySamsung factorySamsung = new FactorySamsung();
-        factorySamsung.createSamsung();
-        factorySamsung.createSamsung();
-        Samsung[] samsungs = factorySamsung.getSamsungs();
-        for (Samsung samsung : samsungs) {
-            if (samsung != null) {
-                samsung.takeFoto();
-                System.out.println(samsung.getCorpus());
-                System.out.println("-------------");
-            }
-        }
+//        FactorySamsung factorySamsung = new FactorySamsung();
+//        factorySamsung.createSamsung();
+//        factorySamsung.createSamsung();
+//        Samsung[] samsungs = factorySamsung.getSamsungs();
+//        for (Samsung samsung : samsungs) {
+//            if (samsung != null) {
+//                samsung.takeFoto();
+//                System.out.println(samsung.getCorpus());
+//                System.out.println("-------------");
+//            }
+//        }
+
+        Samsung samsung1 = FactorySamsung.createSamsung();
+        samsung1.takeFoto();
+        samsung1.getProcessor();
+        Samsung samsung2 = FactorySamsung.createSamsung();
+        System.out.println(samsung2.equals(samsung1));
+        FactorySamsung.getSamsungs();
     }
 
     public static void ex3() {

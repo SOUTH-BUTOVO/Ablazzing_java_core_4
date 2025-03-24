@@ -1,6 +1,6 @@
 package com.javaacademy.core.homework3.city;
 
-public final class House {
+public final class House implements Cloneable {
     private String streetName; // наименование улицы
     private int houseNumber; // номер дома
 
@@ -24,6 +24,11 @@ public final class House {
 
     public void setHouseNumber(int houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     @Override

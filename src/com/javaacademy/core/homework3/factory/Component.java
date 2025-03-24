@@ -11,10 +11,15 @@ public abstract class Component {
         this.camera = camera;
         this.processor = processor;
         this.corpus = corpus;
+        for (Processor cpu : processor) {
+            if (cpu == null) {
+                throw new RuntimeException("Процессор не установлен!");
+            }
+        }
     }
 
     public void takeFoto() {
-        System.out.printf("Сделано фото в %s мегапикселя\n", camera);
+        System.out.printf("Сделано фото в %s мегапикселя\n", camera.getNumberMegaPixel());
 
     }
 
