@@ -10,12 +10,12 @@ public class Runner {
         //ex1();
         //ex2();
         //ex3();
-        //ex4();
-        try (InputStream resourceAsStream = Runner.class.getClassLoader().getResourceAsStream("config.txt");
-             Scanner scanner = new Scanner(resourceAsStream)) {
-            System.out.println(scanner.nextLine());
-
-        }
+        ex4();
+//        try (InputStream resourceAsStream = Runner.class.getClassLoader().getResourceAsStream("config.txt");
+//             Scanner scanner = new Scanner(resourceAsStream)) {
+//            System.out.println(scanner.nextLine());
+//
+//        }
     }
 
     private static void ex4() throws IOException {
@@ -24,8 +24,8 @@ public class Runner {
         String fileName = "lesson10.txt";
         Path path = Path.of(resourcesPath, fileName);
 
-        try (FileWriter fileWriter = new FileWriter(path.toFile())) {
-            fileWriter.write("У меня 10й урок!");
+        try (FileWriter fileWriter = new FileWriter(path.toFile(), false)) {
+            fileWriter.write("У меня 10й урок!\n");
         }
     }
 
