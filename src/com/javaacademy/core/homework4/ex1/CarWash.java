@@ -10,8 +10,8 @@ public class CarWash {
     private BigDecimal totalCost = BigDecimal.ZERO;
 
     public BigDecimal carClean(Car car) {
-        BigDecimal costWash = car.getLength() > 6 &&
-                              car.getWidth() > 2 &&
+        BigDecimal costWash = car.getLength() > 6 ||
+                              car.getWidth() > 2 ||
                               car.getHeight() > 2.5 ?
                               rateBigCar : rateLightCar;
 
