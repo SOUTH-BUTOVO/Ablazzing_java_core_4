@@ -78,7 +78,7 @@ public class Runner {
 
 
         //ex1();
-        //ex2();
+        ex2();
     }
 
     private static void ex2() {
@@ -117,5 +117,6 @@ public class Runner {
             System.out.printf("%s\t- %.2f%n", countries[i], donations[i]);
             System.out.println("-------------------");
         }
+        scanner.close();
     }
 }

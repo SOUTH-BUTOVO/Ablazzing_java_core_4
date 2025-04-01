@@ -7,6 +7,10 @@ import java.nio.file.Path;
 public class CompSpy extends Computer {
     private Computer computer;
 
+    private String filePath = "resources";
+    private String fileName = "comp.log";
+    private Path path = Path.of(filePath, fileName);
+
     public CompSpy(Computer computer) {
         this.computer = computer;
     }
@@ -22,38 +26,25 @@ public class CompSpy extends Computer {
 
     @Override
     public void entry(User user) {
-        String filePath = "resources";
-        String fileName = "comp.log";
-        Path path = Path.of(filePath, fileName);
-        try (FileWriter writer = new FileWriter(path.toFile(), false)) {
-            writer.write("Пользователь %s вошел\n".formatted(user.getName()));
-            super.entry(user);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        writeToLog("Пользователь %s вошел".formatted(user.getName()));
+        super.entry(user);
     }
 
     @Override
     public void message(String text) {
-        String filePath = "resources";
-        String fileName = "comp.log";
-        Path path = Path.of(filePath, fileName);
-        try (FileWriter writer = new FileWriter(path.toFile(), true)) {
-            writer.write("Пользователь: %s, отправил сообщение: %s\n".formatted(getUser().getName(), text));
-            super.message(text);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        writeToLog("Пользователь: %s, отправил сообщение: %s".formatted(getUser().getName(), text));
+        computer.message(text);
     }
 
     @Override
     public void exit() {
-        String filePath = "resources";
-        String fileName = "comp.log";
-        Path path = Path.of(filePath, fileName);
+        writeToLog("Пользователь %s вышел".formatted(getUser().getName()));
+        computer.exit();
+    }
+
+    private void writeToLog(String text) {
         try (FileWriter writer = new FileWriter(path.toFile(), true)) {
-            writer.write("Пользователь %s вышел\n".formatted(getUser().getName()));
-            super.exit();
+            writer.write(text + "\n");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
